@@ -1,24 +1,17 @@
 # brothersbrick.py
 # Trevor Westphal
+from parsing_lib.helper import openDbFiles
 
 def parseBrothersBrick(source, url, category):
 	print("Source:%s, URL:%s, Category:%s" % (source, url, category))
 
 	# Open the db files needed
-	dbFilePathString = ("db/%s/%s.db" % (category, category))
-	dbMetaDataString = ("db/%s/%s.dbm" % (category, category))
+	dbFile, dbMeta = openDbFiles(category)
 
-	try:
-		dbMeta = open(dbMetaDataString, "r")
-	except:
-		of = open("error_log.txt", "a")
-		of.write("Error accessing db: %s, %s, %s\n" % (dbFilePathString, dbMetaDataString, datetime.datetime.now()))
-		of.close()
+	if(fbFile and dbMeta):
 
-	dbFile = open(dbFilePathString, "a")
-
-	for line in dbMeta:
-		print(line)
+		for line in dbMeta:
+			print(line)
 
 	dbFile.close()
 	dbMeta.close()
