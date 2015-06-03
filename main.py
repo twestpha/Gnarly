@@ -11,7 +11,7 @@ class parseController:
 
 	def setupKeywordParsingDict(self):
 		self.parsingDict = {
-			"brothersbrick":parseBrothersBrick,
+			"brothersbrick":parseBrothersBrick
 		}
 
 	def parse(self, array):
@@ -19,7 +19,8 @@ class parseController:
 			self.parsingDict[array[1]](array[0], array[2], array[3])
 		except:
 			of = open("error_log.txt", "a")
-			of.write("Error: %s, %s, %s, %s\n" % (array[0], array[1], array[2], datetime.datetime.now()))
+			of.write("Error parsing keyword: %s, %s, %s, %s\n" % (array[0], array[1], array[2], datetime.datetime.now()))
+			of.close()
 
 # Entry point
 p = parseController()
