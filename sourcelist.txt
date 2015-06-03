@@ -1,0 +1,4 @@
+# Source Name|parsing key word|optional url|Category
+Brothers Brick|brothersbrick|null|Lego
+Lego - Reddit|reddit|http://www.reddit.com/r/lego/new/|Lego
+AFOL - Reddit|reddit|http://www.reddit.com/r/afol/new/|Lego
