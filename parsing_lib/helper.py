@@ -5,21 +5,18 @@ import datetime
 import urllib.request
 from urllib import *
 
-def openDbFiles(category):
-	dbFilePathString = ("db/%s/%s.db" % (category, category))
-	dbMetaDataString = ("db/%s/%s.dbm" % (category, category))
+def openDbFile(category):
+	dbFilePathString = ("db/%s.db" % category)
 
 	try:
-		dbMeta = open(dbMetaDataString, "r")
+		dbFile = open(dbFilePathString, "a+")
 	except:
 		errorFile = open("error_log.txt", "a")
-		errorFile.write("Error accessing db: %s, %s, %s\n" % (dbFilePathString, dbMetaDataString, datetime.datetime.now()))
+		errorFile.write("Error accessing db: %s, %s\n" % (dbFilePathString, datetime.datetime.now()))
 		errorFile.close()
 		return
 
-	dbFile = open(dbFilePathString, "a")
-
-	return (dbFile, dbMeta)
+	return (dbFile)
 
 def getHTMLDoc(url):
 	try:
@@ -32,3 +29,10 @@ def getHTMLDoc(url):
 		return
 	
 	return response.read().decode('utf-8')
+
+def getLastPostTime(dbFile):
+	dbFile.seek(0, 0)
+	for line in dbFile:
+		pass
+	
+	return line.split("|")[-1]
