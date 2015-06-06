@@ -36,3 +36,17 @@ def getLastPostTime(dbFile):
 		pass
 	
 	return line.split("|")[-1]
+
+def dateFromBrothersBrickString(dateString):
+	# 2015-06-05T18:05:50+00:00
+	# 0123456789012345678901234
+
+	year = int(dateString[0:4])
+	month = int(dateString[5:7])
+	day = int(dateString[8:10])
+	hour = int(dateString[11:13])
+	minute = int(dateString[14:16])
+	second = int(dateString[17:19])
+	d = datetime.datetime(year, month, day, hour, minute, second)
+
+	return d
